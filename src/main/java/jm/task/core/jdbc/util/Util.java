@@ -6,6 +6,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.metamodel.MetadataSources;
+import org.hibernate.service.ServiceRegistry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -51,10 +52,11 @@ public class Util {
     public static SessionFactory getSessionFactory() {
 
         try {
+            Configuration cfg = getConfiguration();
+            serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
+            sessionFactory = cfg.buildSessionFactory(serviceRegistry);
 
-            StandardServiceRegistryBuilder registryBuilder = new StandardServiceRegistryBuilder();
-            registryBuilder.applySettings(getConfiguration().getProperties()).build();
-            sessionFactory = getConfiguration().buildSessionFactory();
+
         } catch (Exception e) {
             System.out.println("SessionFactory failed");
             StandardServiceRegistryBuilder.destroy(serviceRegistry);
