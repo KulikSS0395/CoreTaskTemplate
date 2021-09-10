@@ -190,7 +190,7 @@ public class UserDaoJDBCImpl implements UserDao {
         try {
             connection = Util.getConnection();
             Statement statement = connection.createStatement();
-            statement.execute("TRUNCATE TABLE users");
+            statement.executeUpdate("TRUNCATE TABLE users");
 
             try {
                 statement.close();
