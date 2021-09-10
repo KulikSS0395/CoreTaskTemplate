@@ -5,14 +5,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.metamodel.MetadataSources;
-import org.hibernate.service.ServiceRegistry;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
+
 import java.util.Properties;
 
 public class Util {
@@ -55,7 +52,6 @@ public class Util {
             Configuration cfg = getConfiguration();
             serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
             sessionFactory = cfg.buildSessionFactory(serviceRegistry);
-
 
         } catch (Exception e) {
             System.out.println("SessionFactory failed");

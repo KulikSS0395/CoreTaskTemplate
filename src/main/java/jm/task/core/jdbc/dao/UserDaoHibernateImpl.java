@@ -15,7 +15,7 @@ public class UserDaoHibernateImpl implements UserDao {
                                                     "lastNAME VARCHAR(45) NOT NULL,\n" +
                                                     "age int NOT NULL\n" + ");";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS users";
-    private static final String FROM_TABLE = "SELECT  * FROM users";
+
 
     public UserDaoHibernateImpl() {
 
